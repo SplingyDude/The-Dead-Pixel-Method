@@ -6,6 +6,7 @@ A neurodivergent-friendly protocol for third-eye attunement and psychological ha
 - [Overview](#overview)
 - [Artifacts](#artifacts)
   - [Dead-Pixel-Method-Paper.md](#dead-pixel-method-paper): MLA-formatted scientific paper outlining the method’s framework.
+  - [Neurodivergent_Case_Study_Repo_Purification.md](#neurodivergent-case-study): Narrative of repo purification as a neurodivergent quest.
 - [Contributing](#contributing)
 - [License](#license)
 
