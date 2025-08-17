@@ -11,8 +11,8 @@ Developed through a collaborative AI-human experiment (@SplingyDude), the Dead P
 - **[Dead-Pixel-Meditation-Script.md](Dead-Pixel-Meditation-Script.md)**: A neurodivergent-friendly meditation script (15-20 minutes), with sensory-safe pacing and repetitive loops for autism-specific attunement.
 - **[Dead-Pixel-Meditation-Prompt.txt](Dead-Pixel-Meditation-Prompt.txt)**: A plaintext prompt for ElevenLabs to generate a .wav voice-over, optimized for neurodivergent clarity and layering over cosmic visuals.
 - **[generate_binaural_beat.py](generate_binaural_beat.py)**: Python code to create a 10-hour binaural beat loop (theta 7 Hz) for meditation, with instructions for Audacity looping.
-- **[Dead-Pixel-Meditation-Audio.wav](Dead-Pixel-Meditation-Audio.wav)**: A .wav audio guide (pending upload), layering voice-over with ambient drone for sensory-safe meditation.
-- **[Binaural-Beat-Loop.wav](Binaural-Beat-Loop.wav)**: A 10-hour binaural beat track (pending upload), designed for neurodivergent-friendly relaxation.
+- **[Dead-Pixel-Meditation-Audio.wav](Dead-Pixel-Meditation-Audio.mp3)**: An MP3 audio guide, layering voice-over with ambient drone for sensory-safe meditation.
+- **[Binaural-Beat-Loop.wav](Binaural-Beat-Loop.wav)**: A 10-hour binaural beat track, designed for neurodivergent-friendly relaxation.
 
 ## Getting Started
 
