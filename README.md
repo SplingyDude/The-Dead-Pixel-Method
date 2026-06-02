@@ -1,6 +1,6 @@
 # The Dead Pixel Method
 
-A neurodivergent-friendly protocol for third-eye attunement and psychological harmonization, rooted in CTMU, Hermetic principles, Jungian archetypes, and zero-point energy. Inspired by @SplingyDude’s “Mental Proof” (YouTube: E-jbYkKbJow), this repository hosts essential artifacts for syndiffeonic resonance.
+A neurodivergent-friendly protocol for third-eye attunement and psychological harmonization, rooted in CTMU, Hermetic principles, Jungian archetypes, and zero-point energy. Inspired by @SplingyDude’s “Mental Proof” (YouTube: E-jbYkKbJow), this repository hosts essential artifacts for syndiffeonic resonance. tl;dr: cia black spot method but with a rorshach twist, minimaxed.
 
 ## Table of Contents
 - [Overview](#overview)
