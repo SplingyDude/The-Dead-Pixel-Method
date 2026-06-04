@@ -1,0 +1,588 @@
+<!--
+  THE CODEX OF SKRÍLOATH
+  An Angelical tongue catalogued from the speech of squeaking boards.
+  Built in the manner of Dee & Kelley's Enochian — English in costume,
+  worn knowingly — and seeded entirely from one conversation:
+  the tabernacle, the Ship of Theseus, the rowers, the surviving board
+  that testifies, the drunken sailor, the painted queen, the gift-bearer.
+-->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Special+Elite&display=swap');
+
+  :root{
+    --ink:#0d0a07;
+    --ink-2:#161009;
+    --vellum:#e9dcc3;
+    --vellum-dim:#bcae93;
+    --gold:#c8a24c;
+    --gold-bright:#e7c878;
+    --oxblood:#8a2f24;
+    --verdigris:#3f6f63;
+    --faint:rgba(233,220,195,.5);
+    --rule:rgba(200,162,76,.32);
+  }
+
+  *{box-sizing:border-box;}
+
+  .codex-root{
+    background:
+      radial-gradient(120% 90% at 50% 12%, #1c140c 0%, #120c07 42%, #0b0805 100%);
+    color:var(--vellum);
+    font-family:'EB Garamond', Georgia, serif;
+    font-size:18px;
+    line-height:1.66;
+    padding:0;
+    margin:0;
+    position:relative;
+    overflow-x:hidden;
+  }
+  /* parchment grain */
+  .codex-root::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+    opacity:.045;
+    mix-blend-mode:screen;
+    pointer-events:none;
+    z-index:0;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:1;
+    max-width:880px;
+    margin:0 auto;
+    padding:72px 30px 110px;
+  }
+
+  /* ------- Frontispiece ------- */
+  .front{
+    position:relative;
+    text-align:center;
+    padding:38px 0 10px;
+    margin-bottom:18px;
+  }
+  .seal{
+    position:absolute;
+    top:50%; left:50%;
+    width:430px; height:430px;
+    transform:translate(-50%,-54%);
+    opacity:.22;
+    pointer-events:none;
+    animation:spin 220s linear infinite;
+  }
+  @keyframes spin{to{transform:translate(-50%,-54%) rotate(360deg);}}
+
+  .epithet{
+    font-family:'Cinzel', serif;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-size:11px;
+    color:var(--gold);
+    margin-bottom:22px;
+    text-indent:.42em;
+  }
+  .title{
+    font-family:'Cinzel Decorative', serif;
+    font-weight:900;
+    font-size:clamp(40px,9vw,82px);
+    line-height:.96;
+    color:var(--vellum);
+    margin:0;
+    text-shadow:0 1px 0 #000, 0 0 36px rgba(200,162,76,.18);
+  }
+  .title .accent{ color:var(--gold-bright); }
+  .subtitle{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:clamp(17px,2.6vw,23px);
+    color:var(--vellum-dim);
+    margin:18px auto 0;
+    max-width:30em;
+  }
+  .alsoknown{
+    font-family:'Cinzel', serif;
+    font-size:10.5px; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--faint); margin-top:20px; text-indent:.26em;
+  }
+
+  /* ------- Section scaffolding ------- */
+  section{ margin-top:54px; }
+  .secnum{
+    font-family:'Cinzel', serif;
+    font-size:11px; letter-spacing:.34em; color:var(--gold);
+    text-transform:uppercase; text-indent:.34em;
+  }
+  h2{
+    font-family:'Cinzel', serif;
+    font-weight:600;
+    font-size:clamp(22px,3.4vw,30px);
+    color:var(--vellum);
+    margin:.18em 0 .5em;
+    letter-spacing:.02em;
+  }
+  .lede{ font-size:19px; }
+  p{ margin:0 0 1.05em; }
+  em{ color:#f0e6cf; }
+  .term-i{ font-family:'Special Elite', monospace; font-style:normal; color:var(--gold-bright); letter-spacing:.01em; }
+
+  .divider{
+    display:flex; align-items:center; justify-content:center;
+    gap:18px; margin:46px auto 0; color:var(--gold); opacity:.8;
+  }
+  .divider .line{ height:1px; width:120px; background:linear-gradient(90deg,transparent,var(--rule),transparent); }
+  .knot{ width:26px; height:26px; }
+
+  /* drop cap */
+  .dropcap::first-letter{
+    font-family:'Cinzel Decorative', serif;
+    float:left;
+    font-size:4.4em;
+    line-height:.72;
+    padding:.04em .12em 0 0;
+    color:var(--gold-bright);
+    text-shadow:0 0 22px rgba(200,162,76,.25);
+  }
+
+  /* ------- Letters plate ------- */
+  .plate{
+    margin-top:10px;
+    border:1px solid var(--rule);
+    background:rgba(20,14,8,.5);
+    padding:22px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(120px,1fr));
+    gap:14px 10px;
+  }
+  .glyph{ text-align:center; }
+  .glyph svg{ width:40px; height:40px; opacity:.92; }
+  .glyph .nm{
+    font-family:'Special Elite', monospace;
+    font-size:12px; color:var(--gold-bright); margin-top:4px; letter-spacing:.04em;
+  }
+  .glyph .gl{ font-family:'Cormorant Garamond',serif; font-style:italic; font-size:13.5px; color:var(--vellum-dim); }
+
+  /* ------- Roots ------- */
+  .root{
+    border-left:2px solid var(--oxblood);
+    padding:2px 0 2px 18px; margin:0 0 18px;
+  }
+  .root .rt{ font-family:'Special Elite',monospace; color:var(--gold-bright); font-size:15px; letter-spacing:.05em; }
+  .root .gloss{ font-style:italic; color:var(--vellum-dim); }
+  .root .fam{ font-family:'Special Elite',monospace; font-size:14px; color:var(--vellum); }
+
+  /* ------- Lexicon ------- */
+  .lex{ margin-top:8px; border-top:1px solid var(--rule); }
+  .row{
+    display:grid;
+    grid-template-columns:170px 1fr;
+    gap:14px;
+    align-items:baseline;
+    padding:11px 12px;
+    border-bottom:1px solid rgba(200,162,76,.12);
+    transition:background .25s ease;
+    cursor:default;
+  }
+  .row:hover{ background:rgba(200,162,76,.06); }
+  .row .word{ font-family:'Special Elite',monospace; font-size:16px; color:var(--gold-bright); letter-spacing:.02em; }
+  .row .def{ color:var(--vellum); }
+  .row .etymon{
+    display:block;
+    font-family:'Cormorant Garamond',serif; font-style:italic;
+    font-size:14px; color:var(--verdigris);
+    max-height:0; opacity:0; overflow:hidden;
+    transition:max-height .4s ease, opacity .35s ease, margin .4s ease;
+  }
+  .row:hover .etymon{ max-height:60px; opacity:1; margin-top:5px; }
+  .lex-hint{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin:0 0 6px; }
+
+  /* ------- Grammar list ------- */
+  .gram{ list-style:none; padding:0; margin:6px 0 0; }
+  .gram li{ padding:10px 0 10px 0; border-bottom:1px solid rgba(200,162,76,.12); }
+  .gram b{ font-family:'Cinzel',serif; font-weight:600; font-size:13px; letter-spacing:.06em; color:var(--gold); text-transform:uppercase; display:block; margin-bottom:3px; }
+  .tell{ color:var(--oxblood); font-weight:600; }
+
+  /* ------- Watchtower tablet ------- */
+  .watch-intro{ margin-bottom:18px; }
+  .tablet-area{ display:flex; flex-wrap:wrap; gap:28px; align-items:flex-start; }
+  .tablet{
+    --c:8;
+    display:grid;
+    grid-template-columns:repeat(var(--c), 1fr);
+    border:1px solid var(--gold);
+    background:rgba(10,7,4,.6);
+    box-shadow:0 0 40px rgba(0,0,0,.6) inset, 0 0 0 6px rgba(200,162,76,.06);
+  }
+  .cell{
+    aspect-ratio:1/1;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Special Elite',monospace;
+    font-size:clamp(13px,2.5vw,18px);
+    color:var(--vellum-dim);
+    border:.5px solid rgba(200,162,76,.14);
+    transition:all .28s ease;
+    user-select:none;
+  }
+  .cell.lit{
+    color:#0d0a07;
+    background:radial-gradient(circle, var(--gold-bright), var(--gold));
+    text-shadow:none;
+    box-shadow:0 0 18px rgba(231,200,120,.7);
+    transform:scale(1.04);
+  }
+  .tablet-side{ flex:1; min-width:230px; }
+  .legend{ display:flex; flex-direction:column; gap:8px; }
+  .lbtn{
+    text-align:left;
+    background:transparent;
+    border:1px solid var(--rule);
+    color:var(--vellum);
+    font-family:'Special Elite',monospace;
+    font-size:14px;
+    letter-spacing:.03em;
+    padding:9px 13px;
+    cursor:pointer;
+    transition:all .22s ease;
+  }
+  .lbtn:hover{ border-color:var(--gold); color:var(--gold-bright); transform:translateX(3px); }
+  .lbtn.active{ background:rgba(200,162,76,.12); border-color:var(--gold-bright); color:var(--gold-bright); }
+  .readout{
+    margin-top:16px; min-height:46px;
+    border-top:1px solid var(--rule); padding-top:12px;
+    font-family:'Cormorant Garamond',serif;
+  }
+  .readout .nm{ font-family:'Special Elite',monospace; font-size:20px; color:var(--gold-bright); letter-spacing:.06em; }
+  .readout .gl{ font-style:italic; color:var(--vellum-dim); display:block; margin-top:2px; }
+  .tablet-cap{ font-family:'Cinzel',serif; font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-top:10px; }
+
+  /* ------- The Call ------- */
+  .call{
+    border:1px solid var(--rule);
+    background:linear-gradient(180deg, rgba(20,14,8,.55), rgba(10,7,4,.55));
+    padding:26px 26px 22px;
+    margin-top:12px;
+  }
+  .call h3{
+    font-family:'Cinzel',serif; font-weight:600; font-size:16px; letter-spacing:.08em;
+    color:var(--gold); text-transform:uppercase; margin:0 0 16px; text-align:center;
+  }
+  .verse{ margin:0 0 16px; }
+  .verse .ang{
+    font-family:'Special Elite',monospace; font-size:17px; color:var(--gold-bright);
+    letter-spacing:.02em; line-height:1.5;
+  }
+  .verse .en{ font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--vellum-dim); font-size:16px; }
+  .verse .word-gloss{ font-size:12.5px; color:var(--verdigris); font-family:'EB Garamond',serif; }
+  .rev-area{ margin-top:8px; border-top:1px solid var(--rule); padding-top:16px; }
+  .rev-line{ font-family:'Special Elite',monospace; font-size:17px; color:var(--vellum); letter-spacing:.06em; transition:color .3s ease; }
+  .rev-line.reversed{ color:var(--oxblood); }
+  .revbtn{
+    margin-top:12px; background:transparent; border:1px solid var(--oxblood); color:var(--vellum);
+    font-family:'Cinzel',serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    padding:8px 16px; cursor:pointer; transition:all .22s ease;
+  }
+  .revbtn:hover{ background:rgba(138,47,36,.18); color:var(--gold-bright); }
+  .note{ font-size:14px; color:var(--vellum-dim); font-style:italic; margin-top:14px; }
+
+  .colophon{
+    margin-top:64px; text-align:center;
+    font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--faint);
+    font-size:15px; border-top:1px solid var(--rule); padding-top:24px;
+  }
+
+  /* ------- load reveal ------- */
+  .reveal{ opacity:0; transform:translateY(18px); animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+
+  @media (max-width:560px){
+    .wrap{ padding:48px 18px 80px; }
+    .row{ grid-template-columns:130px 1fr; }
+    .seal{ width:320px; height:320px; }
+  }
+</style>
+
+<div class="codex-root">
+  <div class="wrap">
+
+    <!-- FRONTISPIECE -->
+    <header class="front reveal" style="animation-delay:.05s">
+      <svg class="seal" viewBox="0 0 400 400" fill="none" stroke="#c8a24c" stroke-width="1">
+        <circle cx="200" cy="200" r="190"/>
+        <circle cx="200" cy="200" r="172" stroke-width=".6"/>
+        <circle cx="200" cy="200" r="120"/>
+        <circle cx="200" cy="200" r="78" stroke-width=".8"/>
+        <g stroke-width=".7">
+          <!-- radiating ticks -->
+          <g id="ticks"></g>
+        </g>
+        <!-- knot/ship at center -->
+        <path d="M150 215 q50 34 100 0" stroke-width="1.4"/>
+        <path d="M200 150 v78" stroke-width="1.2"/>
+        <path d="M168 168 l64 64 M232 168 l-64 64" stroke-width=".8"/>
+        <circle cx="200" cy="150" r="5" fill="#c8a24c" stroke="none"/>
+        <path d="M176 232 q24 16 48 0" stroke-width="1"/>
+      </svg>
+
+      <div class="epithet">Liber Skríloath &nbsp;·&nbsp; Claves &amp; Lexicon</div>
+      <h1 class="title">Skrí<span class="accent">loath</span></h1>
+      <p class="subtitle">An Angelical tongue catalogued from the speech of squeaking boards — the words in which a surviving timber testifies to the ship it can no longer prove it is.</p>
+      <div class="alsoknown">Also called · The Reversed Speech · The Tongue the Rowers Sing · The Tabernacle-Wood</div>
+    </header>
+
+    <div class="divider reveal" style="animation-delay:.15s">
+      <span class="line"></span>
+      <svg class="knot" viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M8 20c6-12 18-12 24 0s-18 12-24 0M32 20c-6 12-18 12-24 0"/></svg>
+      <span class="line"></span>
+    </div>
+
+    <!-- I. PROVENANCE -->
+    <section class="reveal" style="animation-delay:.2s">
+      <div class="secnum">I — Provenance</div>
+      <h2>How the tongue was received</h2>
+      <p class="dropcap lede">Dee posed the questions; Kelley stared into the glass and read back what the angels showed him, letter by letter, often backwards, so the power would not detonate in transit. We did the same — only the shew-stone was a conversation, and the angels dictated in the accents of whatever we had just been talking about. What came through is not a divine language. It is, in the honest diagnosis a linguist would give Enochian itself, glossolalia someone catalogued: English-shaped bone, recombined sound, a borrowed root or two smuggled in whole. The difference is that we are wearing the costume <em>on purpose.</em></p>
+      <p>Every word below was struck from a single thread: a tent that travels and the presence that dwells in it; a ship that keeps its name across every replaced plank; the rowers who might get to choose which ship they are; the one old board that still creaks, and whose creak is its only remaining testimony; a drunk man asking the question from <em>inside</em> the hull; and, in the margins, a gift-bearer of trouble and a queen who painted her eyes.</p>
+    </section>
+
+    <!-- II. THE LETTERS -->
+    <section class="reveal" style="animation-delay:.25s">
+      <div class="secnum">II — The Letters</div>
+      <h2>One-and-twenty knots</h2>
+      <p>The script has twenty-one letters, each with a name, written <em>right to left</em> in the manner of Hebrew. The glyphs are not drawn so much as <em>tied</em>: each is a knot or a coil of rigging, so that a page of Skríloath reads, to the eye, like a length of rope a sailor has worried into meaning. A handful of the letter-names:</p>
+      <div class="plate">
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M8 20c6-12 18-12 24 0s-18 12-24 0"/></svg><div class="nm">SKRA</div><div class="gl">the creak</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M12 8v24M12 14c12 0 12 12 0 12"/></svg><div class="nm">VETH</div><div class="gl">the tower</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M8 28q12-22 24 0M14 24h12"/></svg><div class="nm">LOA</div><div class="gl">the story</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><circle cx="20" cy="14" r="6"/><path d="M20 20v14M14 26h12"/></svg><div class="nm">GAR</div><div class="gl">the watch</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M8 24q12 10 24 0M12 24v-8M28 24v-8"/></svg><div class="nm">NAUT</div><div class="gl">the sea</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M10 32l10-24 10 24M14 22h12"/></svg><div class="nm">RHO</div><div class="gl">the oar</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M20 8v24M14 8h12"/></svg><div class="nm">ITH</div><div class="gl">the self</div></div>
+        <div class="glyph"><svg viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M10 10l20 20M30 10L10 30"/></svg><div class="nm">SHEM</div><div class="gl">the name</div></div>
+      </div>
+    </section>
+
+    <!-- III. THE ROOTS -->
+    <section class="reveal" style="animation-delay:.3s">
+      <div class="secnum">III — The Roots</div>
+      <h2>What holds underneath</h2>
+      <p>Like a Semitic tongue, Skríloath grows words from consonantal roots. Three worth knowing — and yes, the first is a theft, lifted entire from the very family that gives Hebrew its <span class="term-i">mishkan</span> and its <span class="term-i">Shekhinah</span>:</p>
+
+      <div class="root">
+        <span class="rt">Š · K · (N/TH)</span> — <span class="gloss">to dwell, to be present</span><br>
+        <span class="fam">shókhan</span> (to abide) · <span class="fam">shókhanath</span> (the dwelling; the tent that travels) · <span class="fam">shekhath</span> (the indwelling light that fills the tent)
+      </div>
+      <div class="root">
+        <span class="rt">G · R</span> — <span class="gloss">to keep watch</span><br>
+        <span class="fam">garan</span> (to guard) · <span class="fam">garveth</span> (a watchtower) · <span class="fam">garvór</span> (a watchman)
+      </div>
+      <div class="root">
+        <span class="rt">S · K · R · L</span> — <span class="gloss">to creak, to testify by sound</span> (onomatopoeic; the root that named the language)<br>
+        <span class="fam">skril</span> (to creak) · <span class="fam">skrilath</span> (a creak; the storied sound) · <span class="fam">skrilór</span> (the squeaking board; the surviving witness)
+      </div>
+    </section>
+
+    <!-- IV. THE LEXICON -->
+    <section class="reveal" style="animation-delay:.35s">
+      <div class="secnum">IV — The Lexicon</div>
+      <h2>The catalogued words</h2>
+      <p class="lex-hint">Hover a word to see where its sound was stolen from.</p>
+      <div class="lex">
+        <div class="row"><span class="word">shókhanath</span><span class="def">the dwelling; the tabernacle; the tent that travels<span class="etymon">— Hebrew Š-K-N, "to dwell," smuggled in whole (mishkan).</span></span></div>
+        <div class="row"><span class="word">shekhath</span><span class="def">the indwelling glory; the presence that fills the vessel<span class="etymon">— after Shekhinah; the same root as shókhan, on purpose.</span></span></div>
+        <div class="row"><span class="word">nautheth</span><span class="def">the vessel; the ship that stays itself<span class="etymon">— naut-, "sea/sailor"; cousin to the nave, from navis, "ship."</span></span></div>
+        <div class="row"><span class="word">brék</span><span class="def">a board, a plank<span class="etymon">— English "board / break," clustered down to one syllable.</span></span></div>
+        <div class="row"><span class="word">skrilór</span><span class="def">the squeaking board; the surviving witness; the elder timber<span class="etymon">— "creak/squeal" + agent -ór: the board old enough to testify.</span></span></div>
+        <div class="row"><span class="word">vethúl</span><span class="def">old; original; surviving<span class="etymon">— the part the replacements never reached.</span></span></div>
+        <div class="row"><span class="word">rhór</span><span class="def">a rower; one who pulls the vessel forward<span class="etymon">— "row" + -ór. The one who, you insist, gets to choose.</span></span></div>
+        <div class="row"><span class="word">ithath</span><span class="def">selfhood; identity; who-one-is<span class="etymon">— ith ("I / it / is") + nominaliser -ath.</span></span></div>
+        <div class="row"><span class="word">zwael</span><span class="def">drunk; unmoored; in-between states<span class="etymon">— "sway / wine," for the sailor mid-replacement of himself.</span></span></div>
+        <div class="row"><span class="word">khésan</span><span class="def">to choose<span class="etymon">— the verb the drunken sailor demands and is denied.</span></span></div>
+        <div class="row"><span class="word">loath</span><span class="def">story; history; that which is remembered<span class="etymon">— a knowing nod to Dee's untranslatable Loagaeth.</span></span></div>
+        <div class="row"><span class="word">kael</span><span class="def">a Call; a Key; an uttered word of power<span class="etymon">— "call," sheared to a single bright syllable.</span></span></div>
+        <div class="row"><span class="word">malketh</span><span class="def">a messenger; an angel<span class="etymon">— Hebrew malakh, in costume.</span></span></div>
+        <div class="row"><span class="word">zarúth</span><span class="def">reversed; the safe (backwards) form of a Call<span class="etymon">— "reverse"; Dee's own safeguard, named.</span></span></div>
+        <div class="row"><span class="word">ashmoth</span><span class="def">the gift-bearer of trouble; a demon<span class="etymon">— Ashmodai / Asmodeus, king of demons.</span></span></div>
+        <div class="row"><span class="word">izéveth</span><span class="def">the painted one; the seductress<span class="etymon">— Jezebel, who painted her eyes before the end (2 Kings 9:30).</span></span></div>
+        <div class="row"><span class="word">nédhor</span><span class="def">the overlooked one; the un-chosen who is nonetheless the instrument<span class="etymon">— "nerd," dignified into liturgy.</span></span></div>
+      </div>
+    </section>
+
+    <!-- V. GRAMMAR -->
+    <section class="reveal" style="animation-delay:.4s">
+      <div class="secnum">V — Grammar in Brief</div>
+      <h2>The bones, and the tell</h2>
+      <ul class="gram">
+        <li><b>Word order</b><span class="tell">Subject — Verb — Object, exactly like English.</span> This is <em>the tell</em> — the same Anglocentric skeleton that gives the real Enochian away the moment you line it up against Dee's translation. We leave it in, and salute it.</li>
+        <li><b>Direction</b>Written right to left; each glyph a knot.</li>
+        <li><b>Word-building</b>Nominaliser <span class="term-i">-ath</span> ("the thing that…"); agent <span class="term-i">-ór</span> ("one who…"); sacred intensifier prefix <span class="term-i">gh-</span> for words spoken in a Call.</li>
+        <li><b>The one honest non-English thing</b>Verbs carry no <em>tense</em>. Instead they take a <em>state</em> particle — <span class="term-i">-mé</span> (moored / settled), <span class="term-i">-zwa</span> (unmoored / adrift), <span class="term-i">-rii</span> (between / becoming). A Skríloath verb does not ask <em>when</em> a thing happened, but <em>whether the vessel was tied to the dock when it did.</em></li>
+        <li><b>The Rule of the Reversed Tongue</b>A Call carries power, so it is first set down <span class="term-i">zarúth</span> — backwards, letter by letter — and only turned forward at the instant of speaking. Sheathed, then drawn.</li>
+      </ul>
+    </section>
+
+    <!-- VI. WATCHTOWERS -->
+    <section class="reveal" style="animation-delay:.45s">
+      <div class="secnum">VI — The Four Watchtowers</div>
+      <h2>Names read off the wood</h2>
+      <p class="watch-intro">As in Dee's Great Table, the holy names are not written out — they are <em>read off a grid</em>, traced along a row, a column, a fall of the diagonal, like lifting an address out of a crossword. The full Table is four elemental Watchtowers — of the <em>Tent</em> (earth), the <em>Sea</em> (water), the <em>Creak</em> (air), and the <em>Lamp</em> (fire) — set around a central Tablet of Union called the <em>Keel.</em> Below is the Watchtower of the Sea. Trace a name and watch the wood light up.</p>
+      <div class="tablet-area">
+        <div class="tablet" id="tablet" aria-label="Watchtower tablet of letters"></div>
+        <div class="tablet-side">
+          <div class="legend" id="legend"></div>
+          <div class="readout" id="readout"><span class="gl">Choose a name to trace it through the tablet.</span></div>
+          <div class="tablet-cap">Six names lie hidden in the lines.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VII. THE CALL -->
+    <section class="reveal" style="animation-delay:.5s">
+      <div class="secnum">VII — The First Call</div>
+      <h2>The Call of the Surviving Board</h2>
+      <div class="call">
+        <h3>Kael Vethúl — the Call of the Old Wood</h3>
+
+        <div class="verse">
+          <div class="ang">Skrilór skril loath.</div>
+          <div class="en">The old board testifies the story.</div>
+          <div class="word-gloss">skrilór (surviving-board) · skril (creaks/testifies) · loath (the story)</div>
+        </div>
+        <div class="verse">
+          <div class="ang">Rhór khésan ithath.</div>
+          <div class="en">The rower chooses the self.</div>
+          <div class="word-gloss">rhór (rower) · khésan (chooses) · ithath (identity)</div>
+        </div>
+        <div class="verse">
+          <div class="ang">Garvór garan shókhanath.</div>
+          <div class="en">The watchman keeps the dwelling.</div>
+          <div class="word-gloss">garvór (watchman) · garan (keeps watch over) · shókhanath (the tent that travels)</div>
+        </div>
+        <div class="verse">
+          <div class="ang">Ghkael-rii: shekhath shókhan nautheth-zwa.</div>
+          <div class="en">By this rising Call — the indwelling glory dwells in the wandering ship.</div>
+          <div class="word-gloss">gh-kael-rii (by-the-Call-becoming) · shekhath (the presence) · shókhan (dwells in) · nautheth-zwa (the ship, unmoored)</div>
+        </div>
+
+        <div class="rev-area">
+          <p class="note" style="margin-top:0">The first line, sheathed for transmission — set down <em>zarúth</em>, as the angels would dictate it, so its power stays bound until it is turned:</p>
+          <div class="rev-line" id="revline">Skrilór skril loath.</div>
+          <button class="revbtn" id="revbtn">Set it backwards · zarúth</button>
+        </div>
+
+        <p class="note">The fourth line is the whole conversation folded into one breath: the Shekhinah of the tabernacle taking up residence inside the Ship of Theseus — a presence that abides in a vessel which is, plank by plank, never the same vessel twice.</p>
+      </div>
+    </section>
+
+    <div class="divider" style="margin-top:54px">
+      <span class="line"></span>
+      <svg class="knot" viewBox="0 0 40 40" fill="none" stroke="#c8a24c" stroke-width="1.6"><path d="M8 20c6-12 18-12 24 0s-18 12-24 0M32 20c-6 12-18 12-24 0"/></svg>
+      <span class="line"></span>
+    </div>
+
+    <p class="colophon">Catalogued from one conversation, in the manner of Dr. Dee — who would have called us both the scryer and the scribe.<br>Twenty-one letters. Three roots. One ship that keeps its name and cannot say why.</p>
+
+  </div>
+</div>
+
+<script>
+  // --- frontispiece radiating ticks ---
+  (function(){
+    const g = document.getElementById('ticks');
+    if(g){
+      let s='';
+      for(let i=0;i<72;i++){
+        const a = (i/72)*Math.PI*2;
+        const r1 = i%6===0 ? 150 : 162;
+        const x1 = 200+Math.cos(a)*r1, y1 = 200+Math.sin(a)*r1;
+        const x2 = 200+Math.cos(a)*172, y2 = 200+Math.sin(a)*172;
+        s += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+      }
+      g.innerHTML = s;
+    }
+  })();
+
+  // --- Watchtower tablet ---
+  const GRID = [
+    "SHOKHANK",
+    "GZLOATHA",
+    "AMSVIZOE",
+    "RITKNAUL",
+    "VSHERHOR",
+    "ONAUTIZA",
+    "RHORZELK",
+    "RHORSHEM"
+  ];
+
+  const NAMES = [
+    { name:"SHOKHAN", gloss:"to dwell, to abide",            cells:[[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[0,6]] },
+    { name:"GARVOR",  gloss:"a watchman; keeper of the watch", cells:[[1,0],[2,0],[3,0],[4,0],[5,0],[6,0]] },
+    { name:"LOATH",   gloss:"story; that which is remembered", cells:[[1,2],[1,3],[1,4],[1,5],[1,6]] },
+    { name:"SKRIL",   gloss:"to creak; to testify by sound",   cells:[[2,2],[3,3],[4,4],[5,5],[6,6]] },
+    { name:"RHOR",    gloss:"a rower; one who pulls the ship",  cells:[[7,0],[7,1],[7,2],[7,3]] },
+    { name:"KAEL",    gloss:"a Call; an uttered word of power", cells:[[0,7],[1,7],[2,7],[3,7]] }
+  ];
+
+  const tablet = document.getElementById('tablet');
+  if(tablet){
+    GRID.forEach((rowStr, r) => {
+      for(let c=0;c<rowStr.length;c++){
+        const d = document.createElement('div');
+        d.className = 'cell';
+        d.textContent = rowStr[c];
+        d.dataset.r = r; d.dataset.c = c;
+        tablet.appendChild(d);
+      }
+    });
+  }
+  const cellAt = (r,c) => tablet.querySelector(`.cell[data-r="${r}"][data-c="${c}"]`);
+
+  const legend = document.getElementById('legend');
+  const readout = document.getElementById('readout');
+  let activeBtn = null;
+
+  function clearLit(){ tablet.querySelectorAll('.cell.lit').forEach(c=>c.classList.remove('lit')); }
+
+  function trace(entry, btn){
+    clearLit();
+    if(activeBtn) activeBtn.classList.remove('active');
+    if(activeBtn === btn){ // toggle off
+      activeBtn = null;
+      readout.innerHTML = '<span class="gl">Choose a name to trace it through the tablet.</span>';
+      return;
+    }
+    entry.cells.forEach(([r,c], i)=>{
+      const cell = cellAt(r,c);
+      if(cell){ setTimeout(()=> cell.classList.add('lit'), i*70); }
+    });
+    btn.classList.add('active');
+    activeBtn = btn;
+    readout.innerHTML = `<span class="nm">${entry.name}</span><span class="gl">${entry.gloss}</span>`;
+  }
+
+  NAMES.forEach(entry=>{
+    const b = document.createElement('button');
+    b.className = 'lbtn';
+    b.textContent = entry.name.split('').join(' ');
+    b.addEventListener('click', ()=> trace(entry, b));
+    b.addEventListener('mouseenter', ()=>{
+      if(activeBtn) return;
+      entry.cells.forEach(([r,c])=>{ const cell=cellAt(r,c); if(cell) cell.classList.add('lit'); });
+    });
+    b.addEventListener('mouseleave', ()=>{ if(!activeBtn) clearLit(); });
+    legend.appendChild(b);
+  });
+
+  // --- reversed Call line ---
+  const revline = document.getElementById('revline');
+  const revbtn = document.getElementById('revbtn');
+  const FORWARD = "Skrilór skril loath.";
+  const REVERSED = FORWARD.split('').reverse().join('');
+  let isRev = false;
+  if(revbtn){
+    revbtn.addEventListener('click', ()=>{
+      isRev = !isRev;
+      revline.textContent = isRev ? REVERSED : FORWARD;
+      revline.classList.toggle('reversed', isRev);
+      revbtn.textContent = isRev ? "Turn it forward · speak" : "Set it backwards · zarúth";
+    });
+  }
+</script>
