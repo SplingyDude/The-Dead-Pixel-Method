@@ -7,7 +7,7 @@
 
 ## // SAFE MODE — read this first
 
-This is a **work of fiction** and a **creative game.** That framing is not decoration; it is the most load-bearing line in the file.
+This is a **work of fiction** and a **creative game.** That framing is not decoration; it is the most load-bearing line in the file. Unsafe usage operates under cognitive hazard grammar.
 
 The Dead Pixel Theory is **not**:
 - a belief system,
