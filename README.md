@@ -1,5 +1,5 @@
 # THE DEAD PIXEL METHOD
-A GUIDE FOR ANTI-METHOD METHOD HACKING USING BOOLEAN
+A GUIDE FOR ANTI-METHOD METHOD HACKING USING BOOLEAN FOR SOLITAIRE PRIVATE FANTASY GAMING
 
 > One dead pixel in the display of everything. There is nothing in that pixel. That is exactly where you come in.
 
