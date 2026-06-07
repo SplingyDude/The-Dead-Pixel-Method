@@ -1,5 +1,5 @@
-# THE DEAD PIXEL THEORY
-*README — a mood-board ARG · engine ported · running in **safe mode***
+# THE DEAD PIXEL METHOD
+*README — a GUIDE FOR ANTI-METHOD METHOD HACKING USING BOOLEAN
 
 > One dead pixel in the display of everything. There is nothing in that pixel. That is exactly where you come in.
 
