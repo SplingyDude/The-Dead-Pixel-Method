@@ -1,0 +1,25 @@
+{
+  "name": "what-keeps-the-pixel-hot",
+  "version": "1.0.0",
+  "description": "A Dead Pixel Method toy",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.splingydude.deadpixel",
+    "productName": "WhatKeepsThePixelHot",
+    "files": [
+      "main.js",
+      "index.html"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
+  "devDependencies": {
+    "electron": "^42.4.0",
+    "electron-builder": "^26.15.3"
+  }
+}
